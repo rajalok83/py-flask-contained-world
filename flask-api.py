@@ -51,7 +51,6 @@ def home():
   print("User asked for {}".format(in_path))
   in_json = json.load(urllib.request.urlopen("https://api.github.com/users"))
   return get_path(in_json, in_path)
-  # return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
 
 
 if __name__ == "__main__":
