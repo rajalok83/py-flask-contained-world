@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api-dep
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: uss-api
+  template:
+    metadata:
+      labels:
+        app: uss-api
+    spec:
+      containers:
+      - name: flask-api-dep
+        image: pyflask:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000

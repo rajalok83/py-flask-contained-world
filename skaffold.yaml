@@ -1,0 +1,13 @@
+---
+apiVersion: skaffold/v2beta1
+kind: Config
+metadata:
+  name: py-flask-contained-world
+build:
+  artifacts:
+  - image: pyflask
+deploy:
+  kubectl:
+    manifests:
+    - step01-deployment.yml
+    - step02-service.yml
