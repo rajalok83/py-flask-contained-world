@@ -228,7 +228,7 @@
 
 `kubectl delete service -l <label_key_value>`
 
-##Replication and scale
+## Replication and scale
 
 * Get replication set
 
