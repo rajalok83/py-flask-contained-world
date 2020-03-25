@@ -6,10 +6,11 @@
 
 import json
 import urllib.request
-
+import socket
 import flask
 from flask import request
-
+hostname = socket.gethostname()
+ipaddr = socket.gethostbyname(hostname)
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -47,8 +48,9 @@ def get_path(arg_json, arg_path):
 
 @app.route('/', methods=['GET'])
 def home():
+  app.logger.info("Running in host {} with {}".format(hostname, ipaddr))
   in_path = request.args.get('querypath')
-  print("User asked for {}".format(in_path))
+  app.logger.info("User asked for {}".format(in_path))
   in_json = json.load(urllib.request.urlopen("https://api.github.com/users"))
   return get_path(in_json, in_path)
 
